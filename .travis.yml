@@ -1,0 +1,36 @@
+language: node_js
+
+node_js:
+ - 8
+ - 7
+ - 6
+
+cache:
+  directories:
+    - node_modules
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_success:
+  - ./cc-test-reporter after-build --exit-code $EXIT_CODE
+  - npm install --no-save --only=production semantic-release
+
+before_deploy:
+  - npm run coverage -- --coverage-report=text-lcov | codeclimate-test-reporter
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: semantic-release pre && npm publish && semantic-release post || true
+
+  on:
+    branch: master
+    node: 8
+
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+    - /^greenkeeper\/.+/

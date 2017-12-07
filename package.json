@@ -1,0 +1,41 @@
+{
+  "version": "0.0.0-development",
+  "name": "simple-file-cache",
+  "description": "a simple and easy to use file-based cache",
+  "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
+  "homepage": "https://github.com/ahmadnassri/simple-file-cache",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahmadnassri/simple-file-cache.git"
+  },
+  "license": "ISC",
+  "main": "src/index.js",
+  "keywords": [
+    "simple",
+    "file",
+    "cache"
+  ],
+  "engines": {
+    "node": ">=6"
+  },
+  "files": [
+    "src"
+  ],
+  "bugs": {
+    "url": "https://github.com/ahmadnassri/simple-file-cache/issues"
+  },
+  "scripts": {
+    "lint": "standard && echint",
+    "pretest": "npm run lint",
+    "test": "tap test",
+    "coverage": "tap test --reporter silent --coverage"
+  },
+  "devDependencies": {
+    "echint": "4.0.1",
+    "standard": "10.0.3",
+    "tap": "11.0.0"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1"
+  }
+}
