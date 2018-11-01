@@ -1,5 +1,5 @@
 *.log
-/node_modules
 /.nyc_output
-/.cache
+/coverage
+/node_modules
 /test/.cache
