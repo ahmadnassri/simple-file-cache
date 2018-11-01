@@ -1,4 +1,5 @@
 {
+  "private": false,
   "version": "0.0.0-development",
   "name": "simple-file-cache",
   "description": "a simple and easy to use file-based cache",
@@ -8,8 +9,8 @@
     "type": "git",
     "url": "https://github.com/ahmadnassri/simple-file-cache.git"
   },
-  "license": "ISC",
-  "main": "src/index.js",
+  "license": "MIT",
+  "main": "index.js",
   "keywords": [
     "simple",
     "file",
@@ -19,23 +20,27 @@
     "node": ">=6"
   },
   "files": [
-    "src"
+    "lib",
+    "index.js"
   ],
   "bugs": {
     "url": "https://github.com/ahmadnassri/simple-file-cache/issues"
   },
   "scripts": {
-    "lint": "standard && echint",
-    "pretest": "npm run lint",
-    "test": "tap test",
-    "coverage": "tap test --reporter silent --coverage"
-  },
-  "devDependencies": {
-    "echint": "4.0.1",
-    "standard": "10.0.3",
-    "tap": "11.0.0"
+    "lint:deps": "npx updated",
+    "lint:ec": "npx editorconfig-checker .",
+    "lint:js": "npx eslint .",
+    "lint:md": "npx remark --quiet --frail .",
+    "lint": "npx run-p lint:*",
+    "open:coverage": "opener coverage/lcov-report/index.html",
+    "test:tap": "tap test --100 --coverage-report=lcov --no-browser",
+    "test": "npx run-p test:*"
   },
   "dependencies": {
+    "cache-directory": "^2.0.0",
     "mkdirp": "^0.5.1"
+  },
+  "devDependencies": {
+    "tap": "^12.0.1"
   }
 }

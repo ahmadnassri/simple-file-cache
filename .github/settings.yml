@@ -1,0 +1,16 @@
+_extends: .github
+
+repository:
+  name: simple-file-cache
+  description: a simple and easy to use file-based cache
+  topics: simple,file,cache
+  homepage: https://github.com/ahmadnassri/simple-file-cache
+  private: false
+  has_issues: true
+  has_wiki: false
+  has_downloads: false
+  has_projects: false
+  default_branch: master
+  allow_squash_merge: true
+  allow_merge_commit: false
+  allow_rebase_merge: true

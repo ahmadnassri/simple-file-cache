@@ -1,18 +1,22 @@
-const { readFileSync } = require('fs')
+const { accessSync, constants } = require('fs')
 const { test } = require('tap')
-const cache = require('..')
-const md5 = require('../src/md5')
+const md5 = require('../lib/md5')
+const path = require('path')
 
-test('write', assert => {
+// set the env value before including the library
+process.env.SIMPLE_CACHE_DIR = path.join(__dirname, '.cache')
+
+const cache = require('..')('test')
+
+test('should create records under /test/.cache/*', assert => {
   assert.plan(1)
 
   // write to cache
   cache.set('foo', 'bar', 1000)
 
-  const data = readFileSync(`.cache/${md5('foo')}`)
-  const record = JSON.parse(data)
-
-  assert.same(record, { ttl: 1000, data: 'bar' })
+  assert.doesNotThrow(() => {
+    accessSync(`${process.env.SIMPLE_CACHE_DIR}/${md5('foo')}`, constants.F_OK | constants.R_OK)
+  })
 })
 
 test('read', assert => {
