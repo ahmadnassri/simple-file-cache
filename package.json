@@ -1,6 +1,6 @@
 {
   "private": false,
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "name": "@ahmadnassri/simple-file-cache",
   "description": "a simple and easy to use file-based cache",
   "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
