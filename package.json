@@ -33,8 +33,7 @@
     "lint:md": "npx remark --quiet --frail .",
     "lint": "npx run-p lint:*",
     "open:coverage": "opener coverage/lcov-report/index.html",
-    "test:tap": "tap test --100 --coverage-report=lcov --no-browser",
-    "test": "npx run-p test:*"
+    "test": "tap test --100 --coverage-report=lcov --no-browser"
   },
   "dependencies": {
     "cache-directory": "^2.0.0",
