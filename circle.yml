@@ -77,8 +77,7 @@ workflows:
   version: 2
   main:
     jobs:
-      - build:
-          context: npm
+      - build
 
       - lint:
           requires: [ build ]
@@ -93,7 +92,7 @@ workflows:
           requires: [ build ]
 
       - release:
-          context: npm
+          context: smeantic-release
           requires: [ build, lint, test-node-6, test-node-8, test-node-10 ]
           filters:
             branches:
