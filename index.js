@@ -1,5 +1,5 @@
 const { join } = require('path')
-const { writeFileSync, statSync, readFileSync, unlinkSync } = require('fs')
+const { writeFileSync, statSync, readFileSync, unlinkSync, existsSync } = require('fs')
 const dir = require('cache-directory')
 const mkdirp = require('mkdirp')
 
@@ -22,6 +22,10 @@ module.exports = namespace => {
   function get (key) {
     // construct the full path
     const file = join(root, md5(key))
+
+    if (!existsSync(file)) {
+      return null
+    }
 
     // parse the file content
     const record = JSON.parse(readFileSync(file))
